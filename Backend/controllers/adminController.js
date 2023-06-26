@@ -44,7 +44,7 @@ module.exports = {
 
     removeUser: async (req, res) => {
         try {
-            await User.deleteOne({ _id: req.body.data })
+            await User.deleteOne({ _id: req.params.id })
                 .then(() => {
                     res.json({success: true, message: 'Document deleted successfully'});
                 })

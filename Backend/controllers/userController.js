@@ -87,7 +87,6 @@ module.exports = {
 
     getProfileData: async(req, res) => {
         try {
-            console.log(req.body)
             const user = await User.findById(req.body.user._id)
             res.json({ success: true, data: user })
         } catch (error) {

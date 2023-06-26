@@ -9,9 +9,9 @@ router.post('/signup', controllers.register);
 
 router.post('/login', controllers.loginPost)
 
-router.post('/update-profile', verifyToken, controllers.updateProfile )
+router.patch('/update-profile', verifyToken, controllers.updateProfile )
 
-router.post('/update-profile-photo', verifyToken, upload.single('image'), controllers.updateProfilePic)
+router.put('/update-profile-photo', verifyToken, upload.single('image'), controllers.updateProfilePic)
 
 router.get('/profile', verifyToken, controllers.getProfileData) 
 

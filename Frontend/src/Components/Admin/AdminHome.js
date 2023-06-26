@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DeleteModal from "./ModalDelete";
 import EditModal from "./ModalEdit";
+import axios from "../../Api/ApiInstance";
 
 const Dashboard = () => {
 
@@ -38,7 +38,7 @@ const Dashboard = () => {
 
 
   const FetchAllUsers = async () => {
-    await Axios.get('http://localhost:4000/admin/').then((response) => {
+    await axios.get('/admin').then((response) => {
       setUsers(response.data.users)
       setFilteredData(response.data.users)
     }).catch((err) => {
@@ -78,7 +78,7 @@ const Dashboard = () => {
 
         <div className="overflow-x-auto ">
 
-          <table className="border-collapse border border-gray-700 w-96">
+          <table className="border-collapse border border-gray-700 ">
             <thead className=" border-white  ">
               <tr>
                 <th className="border bg-gray-600 text-sm text-white px-4 p-2">USER ID</th>

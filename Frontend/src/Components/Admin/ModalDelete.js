@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
-import Axios from 'axios';
+import axios from '../../Api/ApiInstance'
 import { useNavigate } from 'react-router-dom';
 
 const customStyles = {
@@ -17,15 +17,13 @@ const customStyles = {
 
 function DeleteModal({ data, setUsers }) {
 
-  console.log("this is props ;;;;;;;;;;");
-
   const navigate = useNavigate('/');
   const userId = {
     data: data
   }
 
   const Submit = async () => {
-    await Axios.post('http://localhost:4000/admin/remove-user', userId)
+    await axios.delete(`/admin/remove-user/${data}`)
       .then((response) => {
         setIsOpen(false);
         navigate('/admin')
@@ -52,8 +50,7 @@ function DeleteModal({ data, setUsers }) {
   }
 
   const FetchAllUsers = async () => {
-    await Axios.get('http://localhost:4000/admin/').then((response) => {
-      console.log(response.data);
+    await axios.get('/admin').then((response) => {
       setUsers(response.data.users)
     }).catch((err) => {
       console.log(err);

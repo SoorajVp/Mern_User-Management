@@ -11,7 +11,7 @@ export const profilePhoto = (profilePic) => async (dispatch) => {
         formData.append('image', profilePic);
         console.log(formData);
 
-        const response = await axios.post('/update-profile-photo', formData);
+        const response = await axios.put('/update-profile-photo', formData);
         console.log(response.data);
         dispatch({ type: IMAGE_UPLOAD, payload: response.data });
         

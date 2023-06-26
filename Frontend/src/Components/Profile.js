@@ -60,7 +60,7 @@ export default function Profile() {
     }
 
     try {
-      await axios.post("/update-profile", data).then((response) => {
+      await axios.patch("/update-profile", data).then((response) => {
         if (response.data.success) {
           setEdit(false)
           setProfileName(response.data.data)

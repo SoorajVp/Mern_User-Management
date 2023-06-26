@@ -1,5 +1,5 @@
-import axios  from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios  from '../../Api/ApiInstance';
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -14,9 +14,6 @@ const customStyles = {
   },
 };
 
-
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-// Modal.setAppElement('#yourAppElement');
 
 function EditModal({data, navigate, setUsers }) {
 
@@ -43,7 +40,7 @@ function EditModal({data, navigate, setUsers }) {
   const Submit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:4000/admin/update-user', { id, name, email, mobile })
+      await axios.patch('/admin/update-user', { id, name, email, mobile })
         .then((response) => {
           if (response.data.success) {
             navigate('/admin');
@@ -69,7 +66,7 @@ function EditModal({data, navigate, setUsers }) {
   }
 
   const FetchAllUsers = async () => {
-    await axios.get('http://localhost:4000/admin/').then((response) => {
+    await axios.get('/admin').then((response) => {
       console.log(response.data);
       setUsers(response.data.users)
       setFilteredData(response.data.users)

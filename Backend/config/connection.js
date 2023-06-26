@@ -8,7 +8,7 @@ const connection = async ()=>{
     .then(()=>{
     console.log('Database connected ');
   }).catch((err)=>{
-    console.log("connection failed ...");
+    console.log("connection failed ");
   })
 }
 module.exports=connection
